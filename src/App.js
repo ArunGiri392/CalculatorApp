@@ -1,3 +1,4 @@
+import "./index.css"
 function App() {
   const createDigits = () =>{
     const digits = []
@@ -6,17 +7,19 @@ function App() {
         <button key={i}>{i}</button>
       )
     }
+    console.log(digits);
     return digits
+    
   }
 
   return (
-    <div className="App">
-      <div className="calculator">
-         <div className="display">
+    <div className="package">
+      <div className="calc">
+         <div className="view">
            <span>(0)</span>0
           </div>
 
-         <div className="operators">
+         <div className="members">
             <button>/</button>
             <button>*</button>
             <button>+</button>
@@ -26,8 +29,8 @@ function App() {
 
          </div>
 
-         <div className="digits">
-          {createDigits ()}
+         <div className="alldata">
+          {createDigits()}
           <button>0</button>
           <button>.</button>
           <button>=</button>
