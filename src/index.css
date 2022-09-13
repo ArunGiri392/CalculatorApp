@@ -12,7 +12,7 @@
   font-family: "fi";
 }
 
-.package {
+.fi-package {
   display: flex;
   min-height: 100vh;
   flex-direction: row;
@@ -20,7 +20,7 @@
   justify-content: center;
 }
 
-.calc{
+.fi-calc{
   width: 100%;
   max-width: 400px;
   background-color: #fff;
@@ -29,7 +29,7 @@
   box-shadow: 0px 2px 64px rgba(0, 0, 0, 0.2);
 }
 
-.view {
+.fi-view {
   padding: 16px;
   text-align: right;
   background-color: var(--dark);
@@ -38,7 +38,7 @@
   font-weight: 300;
 }
 
-.view span {
+.fi-view span {
   font-size: 14px;
   color: #888;
 }
@@ -62,18 +62,18 @@ button:hover {
   display: flex;
 }
 
-.members button {
+.fi-members button {
   flex: 1 1 0%;
   background-color: var(--primary);
   font-size: 700;
 }
 
-.alldata {
+.fi-alldata {
   display: flex;
   flex-wrap: wrap;
 }
 
-.alldata button {
+.fi-alldata button {
   flex: 1 1 33.333%;
   max-width: 33.333%;
   background-color: var(--dark);

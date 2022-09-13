@@ -1,39 +1,78 @@
+import { useState} from 'react';
 import "./index.css"
+
+
 function App() {
-  const createDigits = () =>{
-    const digits = []
+  const [calc, setCalc] = useState("");
+  const [result, setResult] = useState("");
+
+  const operators = ['/', '*', "+", "-", "."];
+
+  const changevalue = value => {
+    if (
+      operators.includes(value) && calc === '' ||
+      operators.includes(value) && operators.includes(calc.slice(-1)
+      )
+    ){
+      return;
+    }
+    setCalc(calc + value)
+
+    if (!operators.includes(value)) {
+      setResult(eval(calc + value).toString());
+    }
+  }
+
+  const createallnumbers = () =>{
+    const allnumbers = []
     for (let i = 1 ; i < 10; i++){
-      digits.push(
-        <button key={i}>{i}</button>
+      allnumbers.push(
+        <button onClick= {() => changevalue(i.toString())} key={i}>{i}</button>
       )
     }
-    console.log(digits);
-    return digits
+    
+    return allnumbers
     
   }
 
+  const calculate = () => {
+    setCalc(eval(calc).toString());
+  }
+
+  const deleteLast = () => {
+    if (calc === ""){
+      return;
+    }
+
+    const value = calc.slice(0,-1);
+    setCalc(value);
+  }
+
+
   return (
-    <div className="package">
-      <div className="calc">
-         <div className="view">
-           <span>(0)</span>0
+    <div className="fi-package">
+      <div className="fi-calc">
+         <div className="fi-view">
+         {result ? <span>({result})</span> : ''}
+          { calc || "0"}
           </div>
 
-         <div className="members">
-            <button>/</button>
-            <button>*</button>
-            <button>+</button>
-            <button>-</button>
+         <div className="fi-members">
+         <button onClick= {() => changevalue('/')}>/</button>
+          <button onClick= {() => changevalue('*')}>*</button>
+          <button onClick= {() => changevalue('+')}>+</button>
+          <button onClick= {() => changevalue('-')}>-</button>
+          <button onClick = {deleteLast}>DEL</button>
 
-            <button>DEL</button>
+            
 
          </div>
 
-         <div className="alldata">
-          {createDigits()}
-          <button>0</button>
-          <button>.</button>
-          <button>=</button>
+         <div className="fi-alldata">
+          {createallnumbers()}
+          <button onClick= {() => changevalue('0')}>0</button>
+          <button onClick= {() => changevalue('.')}>.</button>
+          <button onClick= {calculate}>=</button>
          </div>
       </div>
     </div>
